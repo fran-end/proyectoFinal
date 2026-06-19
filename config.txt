@@ -1,0 +1,2 @@
+puerto=8080
+rootFolder=wwwroot
