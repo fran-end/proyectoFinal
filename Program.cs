@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Text;
+using System.IO;
 
 ConfigReader config;
 try
@@ -50,8 +51,6 @@ void ProcesarCliente(Socket clienteSocket, ConfigReader config)
         IPEndPoint clienteEndpoint = (IPEndPoint)clienteSocket.RemoteEndPoint;
         Console.WriteLine($"Cliente conectado: {clienteEndpoint.Address}");
 
-        Logger.Registrar(clienteEndpoint.Address.ToString(), "GET", "/ (sin parsear aún)");
-
         using (NetworkStream stream = new NetworkStream(clienteSocket))
 {
     byte[] buffer = new byte[4096];
@@ -69,21 +68,36 @@ void ProcesarCliente(Socket clienteSocket, ConfigReader config)
     Console.WriteLine("-----------------------------");
 
     // aca juli conectas el HttpRequestParser.cs
+    HttpRequest request = HttpRequestParser.Parse(requestCrudo, stream);
 
-    // se calcula longitud del body
-    string body = "Hola, mundo!";
-    byte[] bodyBytes = Encoding.UTF8.GetBytes(body);
+    Logger.Registrar(clienteEndpoint.Address.ToString(), request.Method, request.Path);
 
-    string headers = "HTTP/1.1 200 OK\r\n" +
-                      $"Content-Length: {bodyBytes.Length}\r\n" +
-                      "Content-Type: text/plain\r\n" +
-                      "Connection: close\r\n" +
-                      "\r\n";
+    if (request.QueryParams.Count > 0)
+{
+    foreach (var kv in request.QueryParams)
+    {
+        Console.WriteLine($"Query param: {kv.Key} = {kv.Value}");
+        Logger.Registrar(clienteEndpoint.Address.ToString(), request.Method, $"{request.Path}?{kv.Key}={kv.Value}");
+    }
+}
 
-    byte[] headerBytes = Encoding.UTF8.GetBytes(headers);
+    if (request.Method == "GET")
+    {
+        string rutaRelativa = request.Path == "/" ? "/index.html" : request.Path;
+        string rutaArchivo = Path.Combine(config.RootFolder, rutaRelativa.TrimStart('/'));
 
-    stream.Write(headerBytes, 0, headerBytes.Length);
-    stream.Write(bodyBytes, 0, bodyBytes.Length);
+        bool enviado = HttpResponseBuilder.SendFile(stream, rutaArchivo);
+
+        if (!enviado)
+        {
+            HttpResponseBuilder.SendNotFound(stream, Path.Combine(config.RootFolder, "404.html"));
+        }
+    }
+    else if (request.Method == "POST")
+    {
+        Console.WriteLine($"Body recibido por POST: {request.Body}");
+        HttpResponseBuilder.SendText(stream, 200, "OK", "<h1>POST recibido</h1>");
+    }
 }
     }
     catch (Exception ex)

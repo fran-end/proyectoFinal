@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {}
   },
@@ -8,19 +8,19 @@
     "net10.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Polaco\\.nuget\\packages\\": {}
+    "C:\\Users\\julia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\Franco\\Downloads\\ifts\\programacionSobreRedes\\proyectoFinal\\proyectoFinal.csproj",
+      "projectUniqueName": "C:\\Users\\julia\\Documents\\GitHub\\proyectoFinal\\proyectoFinal.csproj",
       "projectName": "proyectoFinal",
-      "projectPath": "D:\\Users\\Franco\\Downloads\\ifts\\programacionSobreRedes\\proyectoFinal\\proyectoFinal.csproj",
-      "packagesPath": "C:\\Users\\Polaco\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\Franco\\Downloads\\ifts\\programacionSobreRedes\\proyectoFinal\\obj\\",
+      "projectPath": "C:\\Users\\julia\\Documents\\GitHub\\proyectoFinal\\proyectoFinal.csproj",
+      "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\julia\\Documents\\GitHub\\proyectoFinal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Polaco\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -30,6 +30,7 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -44,10 +45,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "imports": [
           "net461",
@@ -65,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
