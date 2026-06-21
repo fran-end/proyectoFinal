@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo de Películas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Catálogo de Películas</h1>
+        <nav>
+            <a href="/">Todas</a>
+            <a href="/?genero=accion">Acción</a>
+            <a href="/?genero=drama">Drama</a>
+            <a href="/?genero=comedia">Comedia</a>
+        </nav>
+    </header>
+
+    <main class="catalogo">
+        <div class="pelicula">
+            <img src="imagenes/spiderman.jpg" alt="Spider-man">
+            <h2>Spider-man</h2>
+            <p class="genero">Superheroes</p>
+            <p class="sinopsis">Peter Parker, un estudiante brillante pero tímido, adquiere superpoderes tras ser mordido por una araña genéticamente modificada. Tras una tragedia familiar, asume que "un gran poder conlleva una gran responsabilidad", convirtiéndose en el héroe enmascarado Spider-Man para proteger a Nueva York del malvado Duende Verde.</p>
+            <p class="rating">10/10</p>
+        </div>
+
+        <div class="pelicula">
+            <img src="imagenes/joker.jpg" alt="Joker">
+            <h2>Joker</h2>
+            <p class="genero">Thriller</p>
+            <p class="sinopsis">Arthur Fleck es un payaso con una extraña enfermedad mental. Responsable del cuidado de su madre enferma, sueña con su propio espectáculo de stand up comedy. La situación no es favorable. Tanto su condición mental como su oficio lo hacen blanco frecuente de agresiones en ciudad Gótica, lugar sumido en una profunda tensión social.</p>
+            <p class="rating">9/10</p>
+        </div>
+
+        <div class="pelicula">
+            <img src="imagenes/guerra.jpg" alt="Guerra mundial Z">
+            <h2>Guerra mundial Z</h2>
+            <p class="genero">Acción</p>
+            <p class="sinopsis">Cuando el mundo comienza a ser invadido por una legión de muertos vivientes, Gerry Lane (Brad Pitt), un experto investigador de las Naciones Unidas, intentará evitar el fin de la civilización en una carrera contra el tiempo y el destino. La destrucción a la que se ve sometida la raza humana lo lleva a recorrer el mundo entero buscando la solución para frenar esa horrible epidemia.</p>
+            <p class="rating">8/10</p>
+        </div>
+    </main>
+
+    <section class="sugerencia">
+        <h2>¿Te gustaría ver otra película en el catálogo?</h2>
+        <form action="/sugerencia" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="text" name="pelicula" placeholder="Película sugerida" required>
+            <button type="submit">Enviar sugerencia</button>
+        </form>
+    </section>
+</body>
+</html>
